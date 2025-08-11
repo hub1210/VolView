@@ -1,0 +1,16 @@
+{
+  "name": "mpr-core",
+  "version": "0.1.0",
+  "description": "Core MPR logic extracted from VolView",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@kitware/vtk.js": "^28.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
