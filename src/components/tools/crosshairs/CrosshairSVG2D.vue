@@ -83,6 +83,7 @@ export default defineComponent({
             x: point2D[0],
             y: point2D[1],
           };
+          console.log('MPR 画线', position2D.value);
         }
       }
     };
