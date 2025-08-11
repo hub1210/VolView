@@ -10,5 +10,6 @@ application.  It provides two functions:
 - `updateMPR(state, coords)` – update the slice orientations given new
   2D cross-hair coordinates and return the resliced pixel data.
 
-The current implementation contains placeholders where application code
-may plug in custom reslicing logic or further data transformations.
+Both functions now perform the actual resampling by leveraging
+`vtkImageReslice`, returning the high-bit slice data for the axial,
+coronal and sagittal planes.
