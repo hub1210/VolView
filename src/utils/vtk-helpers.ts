@@ -82,9 +82,11 @@ export function intersectMouseEventWithPlane(
  */
 export function worldToSVG(xyz: Vector3, renderer: vtkRenderer) {
   const coords = computeWorldToDisplay(xyz, renderer);
+  debugger;
   const view = renderer.getRenderWindow()?.getViews()?.[0];
   if (coords && view) {
     const [, height] = view.getViewportSize(renderer);
+    debugger;
     // convert from canvas space to svg space
     return [
       coords[0] / devicePixelRatio,
@@ -131,9 +133,13 @@ export function getShiftedOpacityFromPreset(
       points.push([OpacityPoints[i], OpacityPoints[i + 1]]);
     }
 
+    debugger;
     const [xmin, xmax] = effectiveRange;
+    debugger;
     const width = xmax - xmin;
+    debugger;
     return points.map(([x, y]) => {
+      debugger;
       // Non-zero values should be affected by shift
       // but preset values of zero should not
       const shifted = y && y - shiftAlpha;

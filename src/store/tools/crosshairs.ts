@@ -53,6 +53,7 @@ export const useCrosshairsToolStore = defineStore('crosshairs', () => {
 
   function setPosition(pos: Vector3) {
     position.value = pos;
+    console.log('MPR 设置位置', pos);
   }
 
   // update the slicing
@@ -95,11 +96,13 @@ export const useCrosshairsToolStore = defineStore('crosshairs', () => {
     const origin = handle.getOrigin();
     if (origin) {
       position.value = origin;
+      console.log('MPR 位置修改', origin);
     }
   });
 
   function activateTool() {
     active.value = true;
+    console.log('MPR 初始化');
     return true;
   }
 

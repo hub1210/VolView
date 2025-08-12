@@ -48,6 +48,7 @@ export default defineComponent({
     const widget = view.widgetManager.addWidget(
       factory
     ) as vtkCrosshairsViewWidget;
+    console.log('MPR 初始化: 添加视图组件');
 
     onUnmounted(() => {
       view.widgetManager.removeWidget(factory);
