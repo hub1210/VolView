@@ -1,11 +1,11 @@
-import { VTKEventHandler } from '@/src/composables/onVTKEvent';
-import { AnnotationToolType } from '@/src/store/tools/types';
-import { ToolID } from '@/src/types/annotation-tool';
 import vtkAbstractWidget from '@kitware/vtk.js/Widgets/Core/AbstractWidget';
 import vtkWidgetState from '@kitware/vtk.js/Widgets/Core/WidgetState';
 import vtkPlaneManipulator from '@kitware/vtk.js/Widgets/Manipulators/PlaneManipulator';
 import { vtkSubscription } from '@kitware/vtk.js/interfaces';
 import type { Vector2, Vector3 } from '@kitware/vtk.js/types';
+import { VTKEventHandler } from '../../composables/onVTKEvent';
+import { AnnotationToolType } from '../../store/tools/types';
+import { ToolID } from '../../types/annotation-tool';
 
 export type WidgetAction = {
   name: string;

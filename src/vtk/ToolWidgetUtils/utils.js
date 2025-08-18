@@ -1,12 +1,4 @@
-import { Maybe } from '@/src/types';
-import { Store } from 'pinia';
-
-export function watchStore<T>(
-  publicAPI: any,
-  store: Store,
-  getter: () => Maybe<T>,
-  cmp: (a: Maybe<T>, b: Maybe<T>) => boolean
-) {
+export function watchStore(publicAPI, store, getter, cmp) {
   let cached = getter();
   const unsubscribe = store.$subscribe(() => {
     const val = getter();
@@ -23,11 +15,7 @@ export function watchStore<T>(
   };
 }
 
-export function watchState(
-  publicAPI: any,
-  state: any,
-  callback: () => unknown
-) {
+export function watchState(publicAPI, state, callback) {
   let subscription = state.onModified(callback);
   const originalDelete = publicAPI.delete;
   publicAPI.delete = () => {
@@ -37,7 +25,7 @@ export function watchState(
   };
 }
 
-export const computeWorldCoords = (model: any) => (event: any) => {
+export const computeWorldCoords = (model) => (event) => {
   const manipulator =
     model.activeState?.getManipulator?.() ?? model.manipulator;
   if (!manipulator) {

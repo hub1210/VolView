@@ -1,23 +1,22 @@
 import macro from '@kitware/vtk.js/macro';
-import type { Vector3 } from '@kitware/vtk.js/types';
-import { computeWorldCoords } from '@/src/vtk/ToolWidgetUtils/utils';
+import { computeWorldCoords } from '../ToolWidgetUtils/utils';
 
-export enum InteractionState {
-  PlacingFirst = 'PlacingFirst',
-  PlacingSecond = 'PlacingSecond',
-  Select = 'Select',
-  Dragging = 'Dragging',
-}
+export const InteractionState = {
+  PlacingFirst: 'PlacingFirst',
+  PlacingSecond: 'PlacingSecond',
+  Select: 'Select',
+  Dragging: 'Dragging',
+};
 
-export function shouldIgnoreEvent(e: any) {
+export function shouldIgnoreEvent(e) {
   return e.altKey || e.controlKey || e.shiftKey;
 }
 
-export default function widgetBehavior(publicAPI: any, model: any) {
+export default function widgetBehavior(publicAPI, model) {
   model.classHierarchy.push('vtkRulerWidgetProp');
 
   model.interactionState = InteractionState.Select;
-  let draggingState: any = null;
+  let draggingState = null;
 
   macro.setGet(publicAPI, model, ['interactionState']);
   // support setting per-view widget manipulators
@@ -32,18 +31,18 @@ export default function widgetBehavior(publicAPI: any, model: any) {
     model.activeState = null;
   };
 
-  publicAPI.setFirstPoint = (coord: Vector3) => {
+  publicAPI.setFirstPoint = (coord) => {
     const point = model.widgetState.getFirstPoint();
     point.setOrigin(coord);
   };
 
-  publicAPI.setSecondPoint = (coord: Vector3) => {
+  publicAPI.setSecondPoint = (coord) => {
     const point = model.widgetState.getSecondPoint();
     point.setOrigin(coord);
   };
 
   const originalSetInteractionState = publicAPI.setInteractionState;
-  publicAPI.setInteractionState = (state: InteractionState) => {
+  publicAPI.setInteractionState = (state) => {
     const changed = originalSetInteractionState(state);
     if (changed && state === InteractionState.PlacingFirst) {
       model.widgetState.setIsPlaced(false);
@@ -71,7 +70,7 @@ export default function widgetBehavior(publicAPI: any, model: any) {
   /**
    * Places or drags a point.
    */
-  publicAPI.handleLeftButtonPress = (eventData: any) => {
+  publicAPI.handleLeftButtonPress = (eventData) => {
     if (!model.manipulator || shouldIgnoreEvent(eventData)) {
       return macro.VOID;
     }
@@ -140,7 +139,7 @@ export default function widgetBehavior(publicAPI: any, model: any) {
   /**
    * Moves a point around.
    */
-  publicAPI.handleMouseMove = (eventData: any) => {
+  publicAPI.handleMouseMove = (eventData) => {
     const worldCoords = getWorldCoords(eventData);
     if (!worldCoords?.length) {
       return macro.VOID;
@@ -176,7 +175,7 @@ export default function widgetBehavior(publicAPI: any, model: any) {
   /**
    * Finishes dragging
    */
-  publicAPI.handleLeftButtonRelease = (eventData: any) => {
+  publicAPI.handleLeftButtonRelease = (eventData) => {
     if (draggingState) {
       const worldCoords = getWorldCoords(eventData);
       if (worldCoords?.length) {
@@ -193,7 +192,7 @@ export default function widgetBehavior(publicAPI: any, model: any) {
     }
   };
 
-  publicAPI.handleRightButtonPress = (eventData: any) => {
+  publicAPI.handleRightButtonPress = (eventData) => {
     if (
       shouldIgnoreEvent(eventData) ||
       publicAPI.getInteractionState() !== InteractionState.Select ||

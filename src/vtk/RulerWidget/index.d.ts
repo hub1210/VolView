@@ -3,15 +3,13 @@ import vtkAbstractWidget from '@kitware/vtk.js/Widgets/Core/AbstractWidget';
 import vtkAbstractWidgetFactory from '@kitware/vtk.js/Widgets/Core/AbstractWidgetFactory';
 import vtkPlaneManipulator from '@kitware/vtk.js/Widgets/Manipulators/PlaneManipulator';
 import { InteractionState } from './behavior';
-import { useRulerStore } from '@/src/store/tools/rulers';
 import vtkWidgetState from '@kitware/vtk.js/Widgets/Core/WidgetState';
 import {
   IAnnotationToolWidgetInitialValues,
   vtkAnnotationToolWidget,
   vtkAnnotationWidgetPointState,
   vtkAnnotationWidgetState,
-} from '@/src/vtk/ToolWidgetUtils/types';
-import { AnnotationToolType } from '@/src/store/tools/types';
+} from '../ToolWidgetUtils/types';
 
 export { InteractionState } from './behavior';
 
