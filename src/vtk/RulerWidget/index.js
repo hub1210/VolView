@@ -4,7 +4,7 @@ import vtkPlanePointManipulator from '@kitware/vtk.js/Widgets/Manipulators/Plane
 import vtkSphereHandleRepresentation from '@kitware/vtk.js/Widgets/Representations/SphereHandleRepresentation';
 import { distance2BetweenPoints } from '@kitware/vtk.js/Common/Core/Math';
 import { Behavior } from '@kitware/vtk.js/Widgets/Representations/WidgetRepresentation/Constants';
-import vtkLineGlyphRepresentation from '@/src/vtk/LineGlyphRepresentation';
+import vtkLineGlyphRepresentation from '../LineGlyphRepresentation';
 
 import widgetBehavior from './behavior';
 import stateGenerator, { PointsLabel } from './state';

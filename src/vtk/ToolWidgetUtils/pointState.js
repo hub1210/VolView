@@ -2,9 +2,9 @@ import macro from '@kitware/vtk.js/macros';
 import vtkWidgetState from '@kitware/vtk.js/Widgets/Core/WidgetState';
 import visibleMixin from '@kitware/vtk.js/Widgets/Core/StateBuilder/visibleMixin';
 import scale1Mixin from '@kitware/vtk.js/Widgets/Core/StateBuilder/scale1Mixin';
-import { watchStore } from '@/src/vtk/ToolWidgetUtils/utils';
-import { PICKABLE_ANNOTATION_TOOL_HANDLE_RADIUS } from '@/src/constants';
 import { toRaw } from 'vue';
+import { PICKABLE_ANNOTATION_TOOL_HANDLE_RADIUS } from '../../constants';
+import { watchStore } from './utils';
 
 const DIAMETER = PICKABLE_ANNOTATION_TOOL_HANDLE_RADIUS * 2;
 
